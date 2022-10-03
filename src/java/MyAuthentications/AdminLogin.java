@@ -7,7 +7,6 @@ package MyAuthentications;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author nakro
  */
-public class UserLogin extends HttpServlet{
-    @Override
+public class AdminLogin extends HttpServlet {
+     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         
@@ -28,8 +27,7 @@ public class UserLogin extends HttpServlet{
              response.sendRedirect("../"); //home
         }else{
             request.getRequestDispatcher("login.jsp").forward(request, response);        
-        }
-        
+        }   
     }
     
     @Override
@@ -42,7 +40,7 @@ public class UserLogin extends HttpServlet{
         HttpSession session = request.getSession(); /* Creating a new session*/
   
         session.setAttribute("username", username);
-        session.setAttribute("role", "user");
+        session.setAttribute("role", "admin");
         
 //      session.invalidate();
         response.sendRedirect("dashboard");

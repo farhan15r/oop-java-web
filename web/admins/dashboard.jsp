@@ -53,7 +53,7 @@
       </button>
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="logout">Sign out</a>
+          <a class="nav-link px-3" href="../users/logout">Sign out</a>
         </div>
       </div>
     </header>
@@ -70,80 +70,60 @@
                   Orders
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="dashboard/myalbums">
-                  <span data-feather="folder"></span>
-                  Albums
-                </a>
-              </li>
             </ul>
           </div>
         </nav>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h2>My Orders</h2>
+            <h2>All Orders</h2>
           </div>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                class="bi bi-clipboard-plus"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"
-                />
-                <path
-                  d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-                />
-                <path
-                  d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
-                />
-              </svg>
-            </div>
-            New order
-          </button>
-
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
                   <th scope="col">No</th>
+                  <th scope="col">Username</th>
                   <th scope="col">Date</th>
                   <th scope="col">Package</th>
                   <th scope="col">Photografer</th>
+                  <th scope="col">Payment</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
+                  <td>Udin</td>
                   <td>Monday, 20/10/2022</td>
                   <td>Basic</td>
                   <td>-</td>
+                  <td>Pending</td>
                   <td class="bg-secondary text-white">Waiting</td>
+                  <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
                 </tr>
                 <tr>
                   <td>2</td>
+                  <td>Farel</td>
                   <td>Sunday, 19/10/2022</td>
                   <td>Basic</td>
                   <td>Sambo</td>
+                  <td>Success</td>
                   <td class="bg-warning">Scheduled</td>
+                  <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
                 </tr>
                 <tr>
                   <td>3</td>
+                  <td>Akif</td>
                   <td>Sunday, 19/9/2022</td>
                   <td>Basic</td>
                   <td>Sambo</td>
+                  <td>Success</td>
                   <td class="bg-success">Finished</td>
+                  <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
                 </tr>
               </tbody>
             </table>
