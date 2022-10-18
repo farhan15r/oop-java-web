@@ -67,6 +67,16 @@
         </div>
         <div class="form-floating">
           <input
+            type="text"
+            class="form-control"
+            id="no_tlp"
+            placeholder="No Telephone"
+            name="no_tlp"
+          />
+          <label for="floatingInput">No Telephone</label>
+        </div>
+        <div class="form-floating">
+          <input
             type="email"
             class="form-control"
             id="email"
