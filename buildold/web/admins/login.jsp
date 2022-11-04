@@ -54,18 +54,8 @@
                     <c:remove var="login" scope="session" /> 
                 </c:when>
             </c:choose>
-
-            <c:set var="register" value='${sessionScope.register}'/>
-            <c:choose>
-                <c:when test="${register == 'success'}">
-                    <div class="alert alert-success" role="alert">
-                        Register is successfully, please login with new account
-                    </div>
-                    <c:remove var="register" scope="session" /> 
-                </c:when>
-            </c:choose>
             <form action="login" method="POST">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal">Sign in as Admin</h1>
 
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username">
@@ -79,7 +69,6 @@
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             </form>
-            <p>Don't have account? <a href="register">Register now!</a></p>
         </main>
     </body>
 </html>

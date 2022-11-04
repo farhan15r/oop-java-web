@@ -45,6 +45,15 @@
     <body class="text-center">
 
         <main class="form-signin">
+            <c:set var="login" value='${sessionScope.login}'/>
+            <c:choose>
+                <c:when test="${login == 'failed'}">
+                    <div class="alert alert-danger" role="alert">
+                        Login failed, please try again.
+                    </div>
+                    <c:remove var="login" scope="session" /> 
+                </c:when>
+            </c:choose>
 
             <c:set var="register" value='${sessionScope.register}'/>
             <c:choose>
