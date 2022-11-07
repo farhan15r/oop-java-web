@@ -186,289 +186,75 @@
                     <h1 class="text-center">Packages</h1>
                     <br>
                     <div class="row">
-                    <c:forEach items="${packages}" var="item" >
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card h-100 shadow-lg">
-                                <div class="card-body">
-                                    <div class="text-center p-3">
-                                        <h5 class="card-title">${item.name}</h5>
-                                        <small>Individual</small>
-                                        <br /><br />
-                                        <span class="h2">$${item.price}</span>/3 hours <br /><br />
+                        <c:forEach items="${packages}" var="item" >
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card h-100 shadow-lg">
+                                    <div class="card-body">
+                                        <div class="text-center p-3">
+                                            <h5 class="card-title">${item.name}</h5>
+                                            <br />
+                                            <span class="h2">${item.price}</span>/${item.time} hours <br /><br />
+                                        </div>
+                                        <p class="card-text">${item.desc_1}</p>
                                     </div>
-                                    <p class="card-text">Personal Only</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="currentColor"
+                                                class="bi bi-check"
+                                                viewBox="0 0 16 16"
+                                                >
+                                            <path
+                                                d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                                                />
+                                            </svg>
+                                            ${item.desc_2}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="currentColor"
+                                                class="bi bi-check"
+                                                viewBox="0 0 16 16"
+                                                >
+                                            <path
+                                                d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                                                />
+                                            </svg>
+                                            ${item.desc_3}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="currentColor"
+                                                class="bi bi-check"
+                                                viewBox="0 0 16 16"
+                                                >
+                                            <path
+                                                d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                                                />
+                                            </svg>
+                                            ${item.desc_4}
+                                        </li>
+                                    </ul>
+                                    <div class="card-body text-center">
+                                        <button
+                                            class="btn btn-outline-primary btn-lg"
+                                            style="border-radius: 30px"
                                             >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        1 Shooting Location
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        50 Photos
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        30 Editing Photos
-                                    </li>
-                                </ul>
-                                <div class="card-body text-center">
-                                    <button
-                                        class="btn btn-outline-primary btn-lg"
-                                        style="border-radius: 30px"
-                                        >
-                                        Select
-                                    </button>
+                                            Select
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
-                    </div>
-                </div>
-            </section>
-
-            <section id="packages">
-                <div class="container p-5">
-                    <h1 class="text-center">Packages</h1>
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card h-100 shadow-lg">
-                                <div class="card-body">
-                                    <div class="text-center p-3">
-                                        <h5 class="card-title">Basic</h5>
-                                        <small>Individual</small>
-                                        <br /><br />
-                                        <span class="h2">$8</span>/3 hours <br /><br />
-                                    </div>
-                                    <p class="card-text">Personal Only</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        1 Shooting Location
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        50 Photos
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        30 Editing Photos
-                                    </li>
-                                </ul>
-                                <div class="card-body text-center">
-                                    <button
-                                        class="btn btn-outline-primary btn-lg"
-                                        style="border-radius: 30px"
-                                        >
-                                        Select
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card h-100 shadow-lg">
-                                <div class="card-body">
-                                    <div class="text-center p-3">
-                                        <h5 class="card-title">Standard</h5>
-                                        <small>Small Business</small>
-                                        <br /><br />
-                                        <span class="h2">$20</span>/6 hours <br /><br />
-                                    </div>
-                                    <p class="card-text">Group People (10 Max)</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        2 Shooting Location
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        100 Photos
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        80 Editing Photos
-                                    </li>
-                                </ul>
-                                <div class="card-body text-center">
-                                    <button
-                                        class="btn btn-outline-primary btn-lg"
-                                        style="border-radius: 30px"
-                                        >
-                                        Select
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card h-100 shadow-lg">
-                                <div class="card-body">
-                                    <div class="text-center p-3">
-                                        <h5 class="card-title">Premium</h5>
-                                        <small>Large Companies</small>
-                                        <br /><br />
-                                        <span class="h2">$40</span>/12 hours <br /><br />
-                                    </div>
-                                    <p class="card-text">Group People (25 Max)</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        3-5 Shooting Location
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        200 Photos
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-check"
-                                            viewBox="0 0 16 16"
-                                            >
-                                        <path
-                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
-                                            />
-                                        </svg>
-                                        150 Editing Photos
-                                    </li>
-                                </ul>
-                                <div class="card-body text-center">
-                                    <button
-                                        class="btn btn-outline-primary btn-lg"
-                                        style="border-radius: 30px"
-                                        >
-                                        Select
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </section>
@@ -551,27 +337,30 @@
                                 <use xlink:href="#bootstrap"></use>
                                 </svg>
                             </a>
-                            <span class="mb-3 mb-md-0 text-muted">� 2022 Company, Inc</span>
+                            <span class="mb-3 mb-md-0 text-muted"> 2022 Company, Inc</span>
                         </div>
 
                         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                             <li class="ms-3">
-                                <a class="text-muted" href="#"
-                                   ><svg class="bi" width="24" height="24">
-                                    <use xlink:href="#twitter"></use></svg
-                                    ></a>
+                                <a class="text-muted" href="#">
+                                    <svg class="bi" width="24" height="24">
+                                    <use xlink:href="#twitter"></use>
+                                    </svg>
+                                </a>
                             </li>
                             <li class="ms-3">
-                                <a class="text-muted" href="https://instagram.com/farhan15r"
-                                   ><svg class="bi" width="24" height="24">
-                                    <use xlink:href="#instagram"></use></svg
-                                    ></a>
+                                <a class="text-muted" href="https://instagram.com/farhan15r">
+                                    <svg class="bi" width="24" height="24">
+                                    <use xlink:href="#instagram"></use>
+                                    </svg>
+                                </a>
                             </li>
                             <li class="ms-3">
-                                <a class="text-muted" href="#"
-                                   ><svg class="bi" width="24" height="24">
-                                    <use xlink:href="#facebook"></use></svg
-                                    ></a>
+                                <a class="text-muted" href="#">
+                                    <svg class="bi" width="24" height="24">
+                                    <use xlink:href="#facebook"></use>
+                                    </svg>
+                                </a>
                             </li>
                         </ul>
                     </footer>

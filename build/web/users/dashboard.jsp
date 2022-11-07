@@ -3,6 +3,7 @@
     Created on : Sep 28, 2022, 12:53:18 PM
     Author     : nakro
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +162,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- form -->
-          <form>
+          <form action="dashboard/oders/add" method="POST">
             <div class="modal-body">
               <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
@@ -170,21 +171,17 @@
 
               <div class="mb-3">
                 <label for="package" class="form-label">Package</label>
-                <select class="form-select mb-3" onchange="packagesChange(this.value)">
+                <select class="form-select mb-3" onchange="packagesChange(this.value)" name="package">
                   <option selected disabled="disabled">Open this select menu</option>
-                  <option value="1" name="package">One</option>
-                  <option value="2" name="package">Two</option>
-                  <option value="3" name="package">Three</option>
+                    <c:forEach items="${packages}" var="item" >
+                      <option value="${item.id}">${item.name}</option>
+                    </c:forEach>
                 </select>
               </div>
 
-              <div class="mb-3 row">
-                <div class="col">
-                  <p class="h5 fw-normal">Price</p>
-                </div>
-                <div class="col">
-                  <p class="h5 fw-normal" id="price">Price</p>
-                </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Price</label>
+                <input type="text" class="form-control" id="price" disabled value="Rp. 0"/>
               </div>
             </div>
             <div class="modal-footer">
@@ -206,12 +203,12 @@
 
       function packagesChange(value) {
         const price = document.getElementById("price");
-        if (value == 1) {
-          price.innerHTML = "Rp. 1.000.000";
-        } else if (value == 2) {
-          price.innerHTML = "Rp. 2.000.000";
-        } else if (value == 3) {
-          price.innerHTML = "Rp. 3.000.000";
+        switch (value) {
+          <c:forEach items="${packages}" var="item" >
+            case "${item.id}":
+              price.value = "${item.price}";
+              break;
+          </c:forEach>
         }
       }
     </script>

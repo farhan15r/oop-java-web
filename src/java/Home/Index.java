@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.PreparedStatement;
 
 import DB.ConnectionDB;
+import Objects.Packages;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Index extends HttpServlet {
     PreparedStatement prSt = null;
     ResultSet rs = null;
 
-    String selectQuery = "select name, price, time, desc_1, desc_2, desc_3 from packages;";
+    String selectQuery = "select id, name, price, time, desc_1, desc_2, desc_3, desc_4 from packages;";
 
     System.out.println(selectQuery);
 
@@ -67,15 +68,17 @@ public class Index extends HttpServlet {
     try {
       while (rs.next()) {
         // get data from database
+        int id = rs.getInt("id");
         String name = rs.getString("name");
         int price = rs.getInt("price");
         String time = rs.getString("time");
         String desc_1 = rs.getString("desc_1");
         String desc_2 = rs.getString("desc_2");
         String desc_3 = rs.getString("desc_3");
+        String desc_4 = rs.getString("desc_4");
 
         // add packeges to list
-        packages.add(new Packages(name, price, time, desc_1, desc_2, desc_3));
+        packages.add(new Packages(id, name, price, time, desc_1, desc_2, desc_3, desc_4));
       }
     } catch (SQLException ex) {
       Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);

@@ -78,9 +78,11 @@ public class UserLogin extends HttpServlet {
         HttpSession session = request.getSession(); /* Creating a new session */
         try {
             if (rs.next()) {
+
                 System.out.println("akun ditemukan");
                 // if admin exist
                 session.setAttribute("username", username);
+                session.setAttribute("id", rs.getString("id"));
                 session.setAttribute("role", "user");
 
                 // session.invalidate(); /* Invalidating the session */
