@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 import com.mysql.jdbc.PreparedStatement;
 
 import DB.ConnectionDB;
-import Objects.Packages;
+import Users.Objects.Packages;
 
 /**
  *
@@ -88,8 +88,45 @@ public class Dashboard extends HttpServlet {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            selectQuery = "select orders.id, orders.date, packages.name AS 'packageName', orders.status_order FROM orders LEFT JOIN packages ON orders.package_id = packages.id;";
+
+            System.out.println(selectQuery);
+
+            try {
+                prSt = (PreparedStatement) conn.prepareStatement(selectQuery);
+            } catch (SQLException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                rs = prSt.executeQuery();
+                System.out.println("data berhasil diambil");
+            } catch (SQLException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // list orders
+            List<Users.Objects.Orders> orders = new ArrayList<>();
+
+            try {
+                while (rs.next()) {
+                    // get data from database
+                    int id = rs.getInt("id");
+                    String packageName = rs.getString("packageName");
+                    String status_order = rs.getString("status_order");
+                    String date = rs.getString("date");
+
+                    // add packeges to list
+                    orders.add(new Users.Objects.Orders(id, packageName, status_order, date));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             // set packeges to request
             request.setAttribute("packages", packages);
+            // set orders to request
+            request.setAttribute("orders", orders);
 
             request.getRequestDispatcher("dashboard.jsp").forward(request, response);
         }

@@ -125,6 +125,18 @@
                 </tr>
               </thead>
               <tbody>
+                <c:set var="i" value="1" />
+                <c:forEach items="${orders}" var="order">
+                  <tr>
+                    <td><c:out value="${i}" /></td>
+                    <td>${order.date}</td>
+                    <td>${order.packageName}</td>
+                    <td>-</td>
+                    <td class="bg-secondary text-white">Waiting</td>
+                  </tr>
+                  <c:set var="i" value="${i + 1}" />
+                </c:forEach>
+                <%-- HARD CODE --%>
                 <tr>
                   <td>1</td>
                   <td>Monday, 20/10/2022</td>
@@ -146,6 +158,7 @@
                   <td>Sambo</td>
                   <td class="bg-success">Finished</td>
                 </tr>
+                <%-- END HARD CODE --%>
               </tbody>
             </table>
           </div>

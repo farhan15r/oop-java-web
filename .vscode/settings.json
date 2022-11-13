@@ -3,5 +3,6 @@
     "lib/**/*.jar",
     "c:\\Users\\nakro\\Downloads\\Compressed\\com.mysql.jdbc_5.1.5.jar",
     "c:\\Program Files\\NetBeans 8.2\\enterprise\\modules\\ext\\servlet3.1-jsp2.3-api.jar"
-  ]
+  ],
+  "java.dependency.packagePresentation": "hierarchical"
 }
