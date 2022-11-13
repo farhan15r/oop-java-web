@@ -46,6 +46,9 @@ public class Dashboard extends HttpServlet {
         if (session.getAttribute("role") == null) {
             response.sendRedirect("../");
         } else {
+            // get user id
+            String userId = (String) session.getAttribute("id");
+
             PreparedStatement prSt = null;
             ResultSet rs = null;
 
@@ -88,7 +91,8 @@ public class Dashboard extends HttpServlet {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            selectQuery = "select orders.id, orders.date, packages.name AS 'packageName', orders.status_order FROM orders LEFT JOIN packages ON orders.package_id = packages.id;";
+            selectQuery = "select orders.id, orders.date, packages.name AS 'packageName', orders.price, orders.status_order FROM orders LEFT JOIN packages ON orders.package_id = packages.id WHERE orders.user_id="
+                    + userId + ";";
 
             System.out.println(selectQuery);
 
@@ -115,9 +119,10 @@ public class Dashboard extends HttpServlet {
                     String packageName = rs.getString("packageName");
                     String status_order = rs.getString("status_order");
                     String date = rs.getString("date");
+                    int price = rs.getInt("price");
 
                     // add packeges to list
-                    orders.add(new Users.Objects.Orders(id, packageName, status_order, date));
+                    orders.add(new Users.Objects.Orders(id, packageName, status_order, date, price));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);

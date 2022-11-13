@@ -3,6 +3,7 @@
     Created on : Sep 28, 2022, 12:53:18 PM
     Author     : nakro
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,6 +96,20 @@
                 </tr>
               </thead>
               <tbody>
+                <c:set var="i" value="1" />
+                <c:forEach items="${orders}" var="order">
+                  <tr>
+                    <td><c:out value="${i}" /></td>
+                    <td>${order.username}</td>
+                    <td>${order.date}</td>
+                    <td>${order.packageName}</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td class="bg-secondary text-white"> </td>
+                    <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
+                  </tr>
+                  <c:set var="i" value="${i + 1}" />
+                </c:forEach>
                 <tr>
                   <td>1</td>
                   <td>Udin</td>

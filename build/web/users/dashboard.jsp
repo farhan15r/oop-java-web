@@ -121,6 +121,7 @@
                   <th scope="col">Date</th>
                   <th scope="col">Package</th>
                   <th scope="col">Photografer</th>
+                  <th scope="col">Price</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
@@ -132,12 +133,13 @@
                     <td>${order.date}</td>
                     <td>${order.packageName}</td>
                     <td>-</td>
-                    <td class="bg-secondary text-white">Waiting</td>
+                    <td>${order.price}</td>
+                    <td class="bg-secondary text-white">${order.status_order}</td>
                   </tr>
                   <c:set var="i" value="${i + 1}" />
                 </c:forEach>
                 <%-- HARD CODE --%>
-                <tr>
+                <%-- <tr>
                   <td>1</td>
                   <td>Monday, 20/10/2022</td>
                   <td>Basic</td>
@@ -157,7 +159,7 @@
                   <td>Basic</td>
                   <td>Sambo</td>
                   <td class="bg-success">Finished</td>
-                </tr>
+                </tr> --%>
                 <%-- END HARD CODE --%>
               </tbody>
             </table>

@@ -1,5 +1,6 @@
 package Users.Objects;
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,8 +11,9 @@ public class Orders {
   private String packageName;
   private String status_order;
   private String date;
+  private String price;
 
-  public Orders(int id, String packageName, String status_order, String date) {
+  public Orders(int id, String packageName, String status_order, String date, int price) {
     this.id = id;
     this.packageName = packageName;
     this.status_order = status_order;
@@ -28,6 +30,12 @@ public class Orders {
     // date to string EEEE dd MMMM yyyy locale english
     SimpleDateFormat formatter2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", new Locale("en"));
     this.date = formatter2.format(date_);
+
+    // int to string IDR 1.000.000
+    Locale locale = new Locale("id", "ID");
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+
+    this.price = currencyFormatter.format(price);
   }
 
   public int getId() {
@@ -60,5 +68,13 @@ public class Orders {
 
   public void setDate(String date) {
     this.date = date;
+  }
+
+  public String getPrice() {
+    return price;
+  }
+
+  public void setPrice(String price) {
+    this.price = price;
   }
 }

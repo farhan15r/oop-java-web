@@ -75,12 +75,13 @@ public class Orders extends HttpServlet {
       // insert into orders
       prSt = null;
 
-      String insertQuery = "insert into orders (user_id, package_id, date, price) " +
+      String insertQuery = "insert into orders (user_id, package_id, date, price, status_order) " +
           "values (" +
           userId + ", " +
           packageId + ", '" +
           date + "', " +
-          price + ");";
+          price + ", " +
+          "'Waiting');";
 
       System.out.println(insertQuery);
 

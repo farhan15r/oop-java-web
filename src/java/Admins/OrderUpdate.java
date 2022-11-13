@@ -20,15 +20,15 @@ public class OrderUpdate extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        
+
         HttpSession session = request.getSession();
-                
+
         Object role = "admin";
-        
-        if(role != session.getAttribute("role")){
-             response.sendRedirect("../../");
-        }else{
-            request.getRequestDispatcher("../orderUpdate.jsp").forward(request, response); 
+
+        if (role != session.getAttribute("role")) {
+            response.sendRedirect("../../");
+        } else {
+            request.getRequestDispatcher("../orderUpdate.jsp").forward(request, response);
         }
     }
 }
