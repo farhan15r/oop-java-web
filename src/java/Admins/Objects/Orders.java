@@ -10,7 +10,8 @@ public class Orders {
   private String username;
   private String date;
   private String packageName;
-  private String status_order;
+  private String statusOrder;
+  private String statusPayment;
 
   public void setId(int id) {
     this.id = id;
@@ -55,11 +56,19 @@ public class Orders {
     return packageName;
   }
 
-  public void setStatus_order(String status_order) {
-    this.status_order = status_order;
+  public void setStatusOrder(String statusOrder) {
+    this.statusOrder = statusOrder;
   }
 
-  public String getStatus_order() {
-    return status_order;
+  public String getStatusOrder() {
+    return statusOrder;
+  }
+
+  public void setStatusPayment(String statusPayment) {
+    this.statusPayment = statusPayment;
+  }
+
+  public String getStatusPayment() {
+    return statusPayment;
   }
 }

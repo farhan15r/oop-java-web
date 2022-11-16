@@ -9,7 +9,8 @@ public class Order {
   private String price;
   private String name;
   private String username;
-  private String status;
+  private String statusOrder;
+  private String statusPayment;
   private int packageId;
 
   public void setId(int id) {
@@ -36,11 +37,15 @@ public class Order {
   }
 
   public void setStatusOrder(String status) {
-    this.status = status;
+    this.statusOrder = status;
   }
 
   public void setPackageId(int packageId) {
     this.packageId = packageId;
+  }
+
+  public void setStatusPayment(String status) {
+    this.statusPayment = status;
   }
 
   public int getId() {
@@ -63,11 +68,15 @@ public class Order {
     return username;
   }
 
-  public String getStatusOrde() {
-    return status;
+  public String getStatusOrder() {
+    return statusOrder;
   }
 
   public int getPackageId() {
     return packageId;
+  }
+
+  public String getStatusPayment() {
+    return statusPayment;
   }
 }

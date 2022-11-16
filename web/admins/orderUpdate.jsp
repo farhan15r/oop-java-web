@@ -66,7 +66,7 @@
             <div class="m-3 h4 border-bottom"><%= session.getAttribute("username") %></div>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="../../dashboard">
                   <span data-feather="file"></span>
                   Orders
                 </a>
@@ -82,7 +82,8 @@
             <h2>Update Order</h2>
           </div>
           <div class="col-6">
-            <form>
+          <%-- FORM --%>
+            <form action="./${order.id}" method="POST">
               <div class="modal-body">
                 <div class="mb-3">
                   <label for="fullname" class="form-label">Full Name</label>
@@ -90,7 +91,6 @@
                     type="text"
                     class="form-control"
                     id="fullname"
-                    name="fullname"
                     value="${order.name}"
                     disabled
                     readonly
@@ -103,7 +103,6 @@
                     type="text"
                     class="form-control"
                     id="username"
-                    name="username"
                     value="${order.username}"
                     disabled
                     readonly
@@ -117,7 +116,7 @@
 
                 <div class="mb-3">
                   <label for="package" class="form-label">Package</label>
-                  <select class="form-select mb-3" onchange="packagesChange(this.value)">
+                  <select class="form-select mb-3" onchange="packagesChange(this.value)" name="package">
                     <c:forEach items="${packages}" var="item" >
                       <c:choose>
                         <c:when test="${item.id == order.packageId}">
@@ -142,9 +141,40 @@
 
                 <div class="mb-3">
                   <label for="payment" class="form-label">Payment</label>
-                  <select class="form-select mb-3">
-                    <option value="1" name="payment" selected>Pending</option>
-                    <option value="2" name="payment">Success</option>
+                  <select class="form-select mb-3" name="status_payment">
+                    <c:choose>
+                      <c:when test="${order.statusPayment == 'Pending'}">
+                        <option value="Pending" selected>Pending</option>
+                        <option value="Success">Success</option>
+                      </c:when>
+                      <c:when test="${order.statusPayment == 'Success'}">
+                        <option value="Pending">Pending</option>
+                        <option value="Success" selected>Success</option>
+                      </c:when> 
+                    </c:choose> 
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="order" class="form-label">Order Status</label>
+                  <select class="form-select mb-3" name="status_order">
+                    <c:choose>
+                      <c:when test="${order.statusOrder == 'Finished'}">
+                        <option value="Finished" selected>Finished</option>
+                        <option value="Scheduled">Scheduled</option>
+                        <option value="Success">Success</option>
+                      </c:when>
+                      <c:when test="${order.statusOrder == 'Scheduled'}">
+                        <option value="Finished">Finished</option>
+                        <option value="Scheduled" selected>Scheduled</option>
+                        <option value="Pending">Pending</option>
+                      </c:when> 
+                      <c:when test="${order.statusOrder == 'Waiting'}">
+                        <option value="Finished">Finished</option>
+                        <option value="Scheduled">Scheduled</option>
+                        <option value="Waiting" selected>Waiting</option>
+                      </c:when> 
+                    </c:choose> 
                   </select>
                 </div>
                 

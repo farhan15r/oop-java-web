@@ -49,7 +49,7 @@ public class OrderUpdate extends HttpServlet {
         Object role = "admin";
 
         if (role != session.getAttribute("role")) {
-            response.sendRedirect("../../");
+            response.sendRedirect("../../../");
         } else {
             PreparedStatement prSt = null;
             ResultSet rs = null;
@@ -81,7 +81,7 @@ public class OrderUpdate extends HttpServlet {
             }
 
             // get order from db
-            selectQuery = "SELECT orders.id, orders.date, orders.price, users.full_name AS 'name', users.username, orders.package_id, orders.status_order FROM orders LEFT JOIN users ON users.id = orders.user_id  WHERE orders.id = "
+            selectQuery = "SELECT orders.id, orders.date, orders.price, users.full_name AS 'name', users.username, orders.package_id, orders.status_order, orders.status_payment FROM orders LEFT JOIN users ON users.id = orders.user_id  WHERE orders.id = "
                     + id + ";";
             System.out.println(selectQuery);
 
@@ -100,7 +100,7 @@ public class OrderUpdate extends HttpServlet {
                     order.setUsername(rs.getString("username"));
                     order.setPackageId(rs.getInt("package_id"));
                     order.setStatusOrder(rs.getString("status_order"));
-
+                    order.setStatusPayment(rs.getString("status_payment"));
                 }
 
                 request.setAttribute("order", order);
@@ -110,5 +110,57 @@ public class OrderUpdate extends HttpServlet {
 
             request.getRequestDispatcher("../../orderUpdate.jsp").forward(request, response);
         }
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+
+        // get id from path
+        String id = request.getPathInfo().substring(1);
+        System.out.println(id);
+
+        // get data from form
+        String date = request.getParameter("date");
+        String packageId = request.getParameter("package");
+        // buat fotografer nanti
+        String statusPayment = request.getParameter("status_payment");
+        String statusOrder = request.getParameter("status_order");
+        int price = 0; // from databse
+
+        // get price from db
+        String selectQuery = "SELECT price FROM packages WHERE id = " + packageId + ";";
+        System.out.println(selectQuery);
+
+        PreparedStatement prSt = null;
+        ResultSet rs = null;
+
+        try {
+            prSt = conn.prepareStatement(selectQuery);
+            rs = prSt.executeQuery();
+
+            while (rs.next()) {
+                price = rs.getInt("price");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // update data to db
+
+        String updateQuery = "UPDATE orders SET date = '" + date + "', price = " + price + ", package_id = " + packageId
+                + ", status_payment = '" + statusPayment + "', status_order = '" + statusOrder + "' WHERE id = " + id
+                + ";";
+
+        System.out.println(updateQuery);
+
+        try {
+            prSt = conn.prepareStatement(updateQuery);
+            prSt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        response.sendRedirect("../order/" + id);
     }
 }

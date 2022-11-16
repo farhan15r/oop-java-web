@@ -24,6 +24,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 import DB.ConnectionDB;
 import Users.Objects.Packages;
+import Users.Objects.Orders;
 
 /**
  *
@@ -92,7 +93,7 @@ public class Dashboard extends HttpServlet {
             }
 
             selectQuery = "select orders.id, orders.date, packages.name AS 'packageName', orders.price, orders.status_order FROM orders LEFT JOIN packages ON orders.package_id = packages.id WHERE orders.user_id="
-                    + userId + ";";
+                    + userId + " ORDER BY orders.date;";
 
             System.out.println(selectQuery);
 
@@ -110,7 +111,7 @@ public class Dashboard extends HttpServlet {
             }
 
             // list orders
-            List<Users.Objects.Orders> orders = new ArrayList<>();
+            List<Orders> orders = new ArrayList<>();
 
             try {
                 while (rs.next()) {

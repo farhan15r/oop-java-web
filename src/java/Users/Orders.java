@@ -75,13 +75,13 @@ public class Orders extends HttpServlet {
       // insert into orders
       prSt = null;
 
-      String insertQuery = "insert into orders (user_id, package_id, date, price, status_order) " +
+      String insertQuery = "insert into orders (user_id, package_id, date, price, status_order, status_payment) " +
           "values (" +
           userId + ", " +
           packageId + ", '" +
           date + "', " +
           price + ", " +
-          "'Waiting');"; // default status
+          "'Waiting', 'Pending');"; // default status order = waiting, status payment = pending
 
       System.out.println(insertQuery);
 

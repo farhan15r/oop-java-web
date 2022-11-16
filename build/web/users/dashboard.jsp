@@ -134,7 +134,18 @@
                     <td>${order.packageName}</td>
                     <td>-</td>
                     <td>${order.price}</td>
-                    <td class="bg-secondary text-white">${order.status_order}</td>
+                    <%-- Status Order --%>
+                    <c:choose>
+                      <c:when test="${order.status_order == 'Waiting'}">
+                        <td class="bg-secondary text-white">Waiting</td>
+                      </c:when>
+                      <c:when test="${order.status_order == 'Scheduled'}">
+                        <td class="bg-warning">Scheduled</td>
+                      </c:when>
+                      <c:when test="${order.status_order == 'Finished'}">
+                        <td class="bg-success text-white">Finished</td>
+                      </c:when>
+                    </c:choose>
                   </tr>
                   <c:set var="i" value="${i + 1}" />
                 </c:forEach>

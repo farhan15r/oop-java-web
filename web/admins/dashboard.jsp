@@ -104,112 +104,37 @@
                     <td>${order.date}</td>
                     <td>${order.packageName}</td>
                     <td>-</td>
-                    <td>-</td>
-                    <td class="bg-secondary text-white">${order.status_order}</td>
+                    <%-- Status Payment --%>
+                    <c:choose>
+                      <c:when test="${order.statusPayment == 'Pending'}">
+                        <td class="bg-warning">Pending</td>
+                      </c:when>
+                      <c:when test="${order.statusPayment == 'Success'}">
+                        <td class="bg-success text-white">Success</td>
+                      </c:when>
+                    </c:choose>
+                    <%-- Status Order --%>
+                    <c:choose>
+                      <c:when test="${order.statusOrder == 'Waiting'}">
+                        <td class="bg-secondary text-white">Waiting</td>
+                      </c:when>
+                      <c:when test="${order.statusOrder == 'Scheduled'}">
+                        <td class="bg-warning">Scheduled</td>
+                      </c:when>
+                      <c:when test="${order.statusOrder == 'Finished'}">
+                        <td class="bg-success text-white">Finished</td>
+                      </c:when>
+                    </c:choose>
                     <td><a href="dashboard/order/${order.id}" class="btn btn-warning text-white btn-sm">Update</a></td>
                   </tr>
                   <c:set var="i" value="${i + 1}" />
                 </c:forEach>
-                <tr>
-                  <td>1</td>
-                  <td>Udin</td>
-                  <td>Monday, 20/10/2022</td>
-                  <td>Basic</td>
-                  <td>-</td>
-                  <td>Pending</td>
-                  <td class="bg-secondary text-white">Waiting</td>
-                  <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Farel</td>
-                  <td>Sunday, 19/10/2022</td>
-                  <td>Basic</td>
-                  <td>Sambo</td>
-                  <td>Success</td>
-                  <td class="bg-warning">Scheduled</td>
-                  <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Akif</td>
-                  <td>Sunday, 19/9/2022</td>
-                  <td>Basic</td>
-                  <td>Sambo</td>
-                  <td>Success</td>
-                  <td class="bg-success">Finished</td>
-                  <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
-                </tr>
               </tbody>
             </table>
           </div>
         </main>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New Order</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <!-- form -->
-          <form>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date" name="date" />
-              </div>
-
-              <div class="mb-3">
-                <label for="package" class="form-label">Package</label>
-                <select class="form-select mb-3" onchange="packagesChange(this.value)">
-                  <option selected disabled="disabled">Open this select menu</option>
-                  <option value="1" name="package">One</option>
-                  <option value="2" name="package">Two</option>
-                  <option value="3" name="package">Three</option>
-                </select>
-              </div>
-
-              <div class="mb-3 row">
-                <div class="col">
-                  <p class="h5 fw-normal">Price</p>
-                </div>
-                <div class="col">
-                  <p class="h5 fw-normal" id="price">Price</p>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      const myModal = document.getElementById("myModal");
-      const myInput = document.getElementById("myInput");
-
-      myModal.addEventListener("shown.bs.modal", () => {
-        myInput.focus();
-      });
-
-      function packagesChange(value) {
-        const price = document.getElementById("price");
-        if (value == 1) {
-          price.innerHTML = "Rp. 1.000.000";
-        } else if (value == 2) {
-          price.innerHTML = "Rp. 2.000.000";
-        } else if (value == 3) {
-          price.innerHTML = "Rp. 3.000.000";
-        }
-      }
-    </script>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
