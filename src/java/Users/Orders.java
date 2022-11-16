@@ -81,7 +81,7 @@ public class Orders extends HttpServlet {
           packageId + ", '" +
           date + "', " +
           price + ", " +
-          "'Waiting');";
+          "'Waiting');"; // default status
 
       System.out.println(insertQuery);
 

@@ -93,7 +93,7 @@
 
     <servlet-mapping>
         <servlet-name>AdminOrderUpdate</servlet-name>
-        <url-pattern>/admins/dashboard/orderID</url-pattern>
+        <url-pattern>/admins/dashboard/order/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>AdminOrderUpdate</servlet-name>

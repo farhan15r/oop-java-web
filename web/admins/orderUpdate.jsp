@@ -3,6 +3,7 @@
     Created on : Sep 28, 2022, 12:53:18 PM
     Author     : nakro
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/" />
 
     <!-- Bootstrap core CSS -->
-    <link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
       .bd-placeholder-img {
@@ -35,11 +36,11 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="../../assets/dist/css/dashboard.css" rel="stylesheet" />
+    <link href="../../../assets/dist/css/dashboard.css" rel="stylesheet" />
   </head>
   <body>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="../../">Photography</a>
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="../../../">Photography</a>
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"
         type="button"
@@ -53,7 +54,7 @@
       </button>
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="../../users/logout">Sign out</a>
+          <a class="nav-link px-3" href="../../../users/logout">Sign out</a>
         </div>
       </div>
     </header>
@@ -90,7 +91,7 @@
                     class="form-control"
                     id="fullname"
                     name="fullname"
-                    value="Akif Rizky"
+                    value="${order.name}"
                     disabled
                     readonly
                   />
@@ -103,7 +104,7 @@
                     class="form-control"
                     id="username"
                     name="username"
-                    value="Akif_"
+                    value="${order.username}"
                     disabled
                     readonly
                   />
@@ -111,15 +112,22 @@
 
                 <div class="mb-3">
                   <label for="date" class="form-label">Date</label>
-                  <input type="date" class="form-control" id="date" name="date" />
+                  <input type="date" class="form-control" id="date" name="date" value="${order.date}"/>
                 </div>
 
                 <div class="mb-3">
                   <label for="package" class="form-label">Package</label>
                   <select class="form-select mb-3" onchange="packagesChange(this.value)">
-                    <option value="1" name="package" selected>One</option>
-                    <option value="2" name="package">Two</option>
-                    <option value="3" name="package">Three</option>
+                    <c:forEach items="${packages}" var="item" >
+                      <c:choose>
+                        <c:when test="${item.id == order.packageId}">
+                          <option value="${item.id}" selected>${item.name}</option>
+                        </c:when>
+                        <c:otherwise>
+                          <option value="${item.id}">${item.name}</option>
+                        </c:otherwise>
+                      </c:choose>
+                    </c:forEach>
                   </select>
                 </div>
 
@@ -139,18 +147,14 @@
                     <option value="2" name="payment">Success</option>
                   </select>
                 </div>
-
-                <div class="mb-3 row">
-                  <div class="col">
-                    <p class="h5 fw-normal">Price</p>
-                  </div>
-                  <div class="col">
-                    <p class="h5 fw-normal" id="price">Rp 1.000.000</p>
-                  </div>
+                
+                <div class="mb-3">
+                  <label for="payment" class="form-label">Price</label>
+                  <input type="text" class="form-control" id="price" disabled value="${order.price}"/>
                 </div>
               </div>
               <div class="modal-footer">
-                <a href="../dashboard" class="btn btn-secondary">Close</a>
+                <a href="../../dashboard" class="btn btn-secondary">Close</a>
                 <button type="submit" class="btn btn-primary">Update</button>
               </div>
             </form>
@@ -160,27 +164,7 @@
       </div>
     </div>
 
-    <script>
-      const myModal = document.getElementById("myModal");
-      const myInput = document.getElementById("myInput");
-
-      myModal.addEventListener("shown.bs.modal", () => {
-        myInput.focus();
-      });
-
-      function packagesChange(value) {
-        const price = document.getElementById("price");
-        if (value == 1) {
-          price.innerHTML = "Rp. 1.000.000";
-        } else if (value == 2) {
-          price.innerHTML = "Rp. 2.000.000";
-        } else if (value == 3) {
-          price.innerHTML = "Rp. 3.000.000";
-        }
-      }
-    </script>
-
-    <script src="../../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
@@ -192,7 +176,22 @@
       integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
       crossorigin="anonymous"
     ></script>
-    <script src="../../assets/dist/js/dashboard.js"></script>
+    <script src="../../../assets/dist/js/dashboard.js"></script>
+
+    <script>
+      const myInput = document.getElementById("myInput");
+
+      function packagesChange(value) {
+        const price = document.getElementById("price");
+        switch (value) {
+          <c:forEach items="${packages}" var="item" >
+            case "${item.id}":
+              price.value = "${item.price}";
+              break;
+          </c:forEach>
+        }
+      }
+    </script>
   </body>
 </html>
 

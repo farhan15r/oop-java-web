@@ -51,7 +51,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                     <div class="container-fluid px-5">
-                        <a class="navbar-brand" href="#">Carousel</a>
+                        <a class="navbar-brand" href="#">Photography</a>
                         <button
                             class="navbar-toggler"
                             type="button"

@@ -105,8 +105,8 @@
                     <td>${order.packageName}</td>
                     <td>-</td>
                     <td>-</td>
-                    <td class="bg-secondary text-white"> </td>
-                    <td><a href="dashboard/orderID" class="btn btn-warning text-white btn-sm">Update</a></td>
+                    <td class="bg-secondary text-white">${order.status_order}</td>
+                    <td><a href="dashboard/order/${order.id}" class="btn btn-warning text-white btn-sm">Update</a></td>
                   </tr>
                   <c:set var="i" value="${i + 1}" />
                 </c:forEach>

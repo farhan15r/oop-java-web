@@ -20,18 +20,18 @@ public class UserLogout extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        
+
         doPost(request, response);
     }
-    
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        
-        HttpSession session = request.getSession(); /* Creating a new session*/
-        
+
+        HttpSession session = request.getSession(); /* Creating a new session */
+
         session.invalidate();
-        
+
         response.sendRedirect("../");
     }
 }
