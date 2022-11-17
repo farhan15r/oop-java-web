@@ -83,6 +83,7 @@ public class AdminLogin extends HttpServlet {
                 // if admin exist
                 session.setAttribute("username", username);
                 session.setAttribute("role", "admin");
+                session.setAttribute("id", rs.getInt("id"));
 
                 // session.invalidate(); /* Invalidating the session */
                 response.sendRedirect("dashboard");

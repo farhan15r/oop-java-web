@@ -132,46 +132,23 @@
                     <td><c:out value="${i}" /></td>
                     <td>${order.date}</td>
                     <td>${order.packageName}</td>
-                    <td>-</td>
+                    <td>${order.photographer}</td>
                     <td>${order.price}</td>
                     <%-- Status Order --%>
                     <c:choose>
-                      <c:when test="${order.status_order == 'Waiting'}">
+                      <c:when test="${order.statusOrder == 'Waiting'}">
                         <td class="bg-secondary text-white">Waiting</td>
                       </c:when>
-                      <c:when test="${order.status_order == 'Scheduled'}">
+                      <c:when test="${order.statusOrder == 'Scheduled'}">
                         <td class="bg-warning">Scheduled</td>
                       </c:when>
-                      <c:when test="${order.status_order == 'Finished'}">
+                      <c:when test="${order.statusOrder == 'Finished'}">
                         <td class="bg-success text-white">Finished</td>
                       </c:when>
                     </c:choose>
                   </tr>
                   <c:set var="i" value="${i + 1}" />
                 </c:forEach>
-                <%-- HARD CODE --%>
-                <%-- <tr>
-                  <td>1</td>
-                  <td>Monday, 20/10/2022</td>
-                  <td>Basic</td>
-                  <td>-</td>
-                  <td class="bg-secondary text-white">Waiting</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Sunday, 19/10/2022</td>
-                  <td>Basic</td>
-                  <td>Sambo</td>
-                  <td class="bg-warning">Scheduled</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Sunday, 19/9/2022</td>
-                  <td>Basic</td>
-                  <td>Sambo</td>
-                  <td class="bg-success">Finished</td>
-                </tr> --%>
-                <%-- END HARD CODE --%>
               </tbody>
             </table>
           </div>

@@ -92,7 +92,7 @@ public class Dashboard extends HttpServlet {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            selectQuery = "select orders.id, orders.date, packages.name AS 'packageName', orders.price, orders.status_order FROM orders LEFT JOIN packages ON orders.package_id = packages.id WHERE orders.user_id="
+            selectQuery = "select orders.id, orders.date, packages.name AS 'packageName', orders.price, orders.status_order, photographers.full_name FROM orders LEFT JOIN packages ON orders.package_id = packages.id LEFT JOIN photographers ON orders.photographer_id = photographers.id WHERE orders.user_id="
                     + userId + " ORDER BY orders.date;";
 
             System.out.println(selectQuery);
@@ -115,15 +115,17 @@ public class Dashboard extends HttpServlet {
 
             try {
                 while (rs.next()) {
+                    Orders order = new Orders();
                     // get data from database
-                    int id = rs.getInt("id");
-                    String packageName = rs.getString("packageName");
-                    String status_order = rs.getString("status_order");
-                    String date = rs.getString("date");
-                    int price = rs.getInt("price");
+                    order.setId(rs.getInt("id"));
+                    order.setDate(rs.getString("date"));
+                    order.setPackageName(rs.getString("packageName"));
+                    order.setPrice(rs.getInt("price"));
+                    order.setStatusOrder(rs.getString("status_order"));
+                    order.setPhotographer(rs.getString("full_name"));
 
                     // add packeges to list
-                    orders.add(new Users.Objects.Orders(id, packageName, status_order, date, price));
+                    orders.add(order);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);

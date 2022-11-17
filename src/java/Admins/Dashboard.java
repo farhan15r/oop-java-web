@@ -52,7 +52,7 @@ public class Dashboard extends HttpServlet {
             PreparedStatement prSt = null;
             ResultSet rs = null;
 
-            String selectQuery = "select orders.id, users.username, orders.date, packages.name AS 'packageName', orders.status_order, orders.status_payment FROM orders LEFT JOIN packages ON orders.package_id = packages.id LEFT JOIN users ON orders.user_id = users.id ORDER BY orders.date;";
+            String selectQuery = "select orders.id, users.username, orders.date, packages.name AS 'packageName', orders.status_order, orders.status_payment, photographers.full_name FROM orders LEFT JOIN packages ON orders.package_id = packages.id LEFT JOIN users ON orders.user_id = users.id LEFT JOIN photographers ON orders.photographer_id = photographers.id ORDER BY orders.date;";
 
             System.out.println(selectQuery);
 
@@ -80,6 +80,7 @@ public class Dashboard extends HttpServlet {
                     orderData.setPackageName(rs.getString("packageName"));
                     orderData.setStatusOrder(rs.getString("status_order"));
                     orderData.setStatusPayment(rs.getString("status_payment"));
+                    orderData.setPhotographerName(rs.getString("full_name"));
                     orders.add(orderData);
                 }
             } catch (SQLException ex) {

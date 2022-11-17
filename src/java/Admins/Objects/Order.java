@@ -12,6 +12,8 @@ public class Order {
   private String statusOrder;
   private String statusPayment;
   private int packageId;
+  private String adminName;
+  private int photographerId;
 
   public void setId(int id) {
     this.id = id;
@@ -48,6 +50,14 @@ public class Order {
     this.statusPayment = status;
   }
 
+  public void setAdminName(String name) {
+    this.adminName = name;
+  }
+
+  public void setPhotographerId(int id) {
+    this.photographerId = id;
+  }
+
   public int getId() {
     return id;
   }
@@ -78,5 +88,13 @@ public class Order {
 
   public String getStatusPayment() {
     return statusPayment;
+  }
+
+  public String getAdminName() {
+    return adminName;
+  }
+
+  public int getPhotographerId() {
+    return photographerId;
   }
 }

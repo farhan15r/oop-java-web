@@ -12,21 +12,16 @@ public class Orders {
   private String packageName;
   private String statusOrder;
   private String statusPayment;
+  private String photographerName;
+
+  // set datas
 
   public void setId(int id) {
     this.id = id;
   }
 
-  public int getId() {
-    return id;
-  }
-
   public void setUsername(String username) {
     this.username = username;
-  }
-
-  public String getUsername() {
-    return username;
   }
 
   public void setDate(String date) {
@@ -44,31 +39,49 @@ public class Orders {
     this.date = formatter2.format(date_);
   }
 
-  public String getDate() {
-    return date;
-  }
-
   public void setPackageName(String packageName) {
     this.packageName = packageName;
-  }
-
-  public String getPackageName() {
-    return packageName;
   }
 
   public void setStatusOrder(String statusOrder) {
     this.statusOrder = statusOrder;
   }
 
-  public String getStatusOrder() {
-    return statusOrder;
-  }
-
   public void setStatusPayment(String statusPayment) {
     this.statusPayment = statusPayment;
   }
 
+  public void setPhotographerName(String photographerName) {
+    this.photographerName = photographerName;
+  }
+
+  // get datas
+
+  public int getId() {
+    return id;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public String getPackageName() {
+    return packageName;
+  }
+
+  public String getStatusOrder() {
+    return statusOrder;
+  }
+
   public String getStatusPayment() {
     return statusPayment;
+  }
+
+  public String getPhotographerName() {
+    return photographerName;
   }
 }

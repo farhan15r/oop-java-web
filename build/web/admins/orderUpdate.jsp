@@ -81,7 +81,7 @@
           >
             <h2>Update Order</h2>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6">
           <%-- FORM --%>
             <form action="./${order.id}" method="POST">
               <div class="modal-body">
@@ -132,10 +132,18 @@
 
                 <div class="mb-3">
                   <label for="photografer" class="form-label">Photografer</label>
-                  <select class="form-select mb-3">
+                  <select class="form-select mb-3" name="photographers">
                     <option selected disabled="disabled">Open this select menu</option>
-                    <option value="1" name="photografer">Ujang</option>
-                    <option value="2" name="photografer">Udin</option>
+                    <c:forEach items="${photographers}" var="item" >
+                      <c:choose>
+                        <c:when test="${item.id == order.photographerId}">
+                          <option value="${item.id}" selected>${item.fullName}</option>
+                        </c:when>
+                        <c:otherwise>
+                          <option value="${item.id}">${item.fullName}</option>
+                        </c:otherwise>
+                      </c:choose>
+                    </c:forEach>
                   </select>
                 </div>
 
@@ -182,10 +190,18 @@
                   <label for="payment" class="form-label">Price</label>
                   <input type="text" class="form-control" id="price" disabled value="${order.price}"/>
                 </div>
+                
+                <div class="mb-3">
+                  <label for="admin_name" class="form-label">Last Modify by</label>
+                  <input type="text" class="form-control" id="admin_name" disabled value="${order.adminName}"/>
+                </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer justify-content-between">
                 <a href="../../dashboard" class="btn btn-secondary">Close</a>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <div>
+                  <a href="./${order.id}?action=delete" class="btn btn-danger mx-3">Delete</a>
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
               </div>
             </form>
           </div>

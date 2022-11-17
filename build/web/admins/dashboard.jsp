@@ -103,7 +103,7 @@
                     <td>${order.username}</td>
                     <td>${order.date}</td>
                     <td>${order.packageName}</td>
-                    <td>-</td>
+                    <td>${order.photographerName}</td>
                     <%-- Status Payment --%>
                     <c:choose>
                       <c:when test="${order.statusPayment == 'Pending'}">
