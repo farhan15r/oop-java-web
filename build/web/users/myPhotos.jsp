@@ -3,6 +3,7 @@
     Created on : Oct 3, 2022, 3:06:50 PM
     Author     : nakro
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +89,12 @@
             <h2>My Photos</h2>
           </div>
           <div class="row">
-            <div class="col-3 justify-content-center pb-3">
+            <c:forEach items="${images}" var="image">
+              <div class="col-lg-3 justify-content-center pb-3" >
+                <img src="../../../${image}" class="img-thumbnail" alt="..." style="max-width: 100%; max-height: 200px; overflow: hidden" />
+              </div>
+            </c:forEach>
+            <%-- <div class="col-3 justify-content-center pb-3">
               <img src="../../../albums/images/roman-ivasyk-nwULyAEDHB8-unsplash.jpg" class="img-thumbnail" alt="..." />
             </div>
             <div class="col-3 justify-content-center pb-3">
@@ -102,10 +108,7 @@
             </div>
             <div class="col-3 justify-content-center pb-3">
               <img src="../../../albums/images/roman-ivasyk-nwULyAEDHB8-unsplash.jpg" class="img-thumbnail" alt="..." />
-            </div>
-            <div class="col-3 justify-content-center pb-3">
-              <img src="../../../albums/images/roman-ivasyk-nwULyAEDHB8-unsplash.jpg" class="img-thumbnail" alt="..." />
-            </div>
+            </div> --%>
             
           </div>
         </main>

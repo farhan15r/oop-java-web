@@ -66,7 +66,7 @@
     
     <servlet-mapping>
         <servlet-name>MyPhotos</servlet-name>
-        <url-pattern>/users/dashboard/myalbums/albumsID</url-pattern>
+        <url-pattern>/users/dashboard/myalbums/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>MyPhotos</servlet-name>
@@ -98,6 +98,34 @@
     <servlet>
         <servlet-name>AdminOrderUpdate</servlet-name>
         <servlet-class>Admins.OrderUpdate</servlet-class>
+    </servlet>
+
+    <!-- Photographers -->
+    <servlet-mapping>
+        <servlet-name>PhotographerLogin</servlet-name>
+        <url-pattern>/photographers/login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PhotographerLogin</servlet-name>
+        <servlet-class>MyAuthentications.PhotographerLogin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PhotographerDashboard</servlet-name>
+        <url-pattern>/photographers/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PhotographerDashboard</servlet-name>
+        <servlet-class>Photographers.Dashboard</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PhotographerAlbum</servlet-name>
+        <url-pattern>/photographers/dashboard/album/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PhotographerAlbum</servlet-name>
+        <servlet-class>Photographers.Album</servlet-class>
     </servlet>
     
     <session-config>
